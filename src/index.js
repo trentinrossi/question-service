@@ -1,15 +1,33 @@
-const express = require('express');
-const app = express();
+const { config } = require('dotenv');
+const { ok } = require('assert');
+const { join } = require('path');
 
-const port = process.env.PORT || 5000;
+const env = process.env.NODE_ENV || 'dev';
+ok(env === 'prod' || env === 'dev', 'Invalid environment');
 
-app.get('/', (req, res) => {
-  res.send('Question service is running');
+const configPath = join(__dirname, './config', `.env.${env}`);
+config({
+  path: configPath,
 });
+
+const express = require('express');
+const mongoose = require('mongoose');
+const categoryRoutes = require('./routes/categoryRoutes');
+
+const app = express();
+const port = process.env.PORT || process.env.SERVICE_PORT;
+
+app.use(express.json());
+app.use('/category', categoryRoutes);
 
 app.listen(port, '0.0.0.0');
 
-// 
-
+mongoose
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error(err));
 
 console.log(`Running on port ${port}`);
