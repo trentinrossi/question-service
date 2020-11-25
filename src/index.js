@@ -1,3 +1,4 @@
+// Only for environment variable
 const { config } = require('dotenv');
 const { ok } = require('assert');
 const { join } = require('path');
@@ -13,12 +14,14 @@ config({
 const express = require('express');
 const mongoose = require('mongoose');
 const categoryRoutes = require('./routes/categoryRoutes');
+const questionRoutes = require('./routes/questionRoutes');
 
 const app = express();
 const port = process.env.PORT || process.env.SERVICE_PORT;
 
 app.use(express.json());
 app.use('/category', categoryRoutes);
+app.use('/question', questionRoutes);
 
 app.listen(port, '0.0.0.0');
 

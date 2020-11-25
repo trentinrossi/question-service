@@ -10,7 +10,8 @@ const subjectSchema = new Schema({
     required: true,
   },
   category: {
-    type: Category,
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
     required: true,
   },
 });

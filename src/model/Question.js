@@ -15,7 +15,8 @@ const questionSchema = new Schema({
     default: 'TEXT',
   },
   subject: {
-    type: Subject,
+    type: Schema.Types.ObjectId,
+    ref: ' Subject',
     require: true,
   },
   mandatory: Boolean,
