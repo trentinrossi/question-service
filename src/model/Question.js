@@ -16,21 +16,15 @@ const questionSchema = new Schema({
   },
   subject: {
     type: Schema.Types.ObjectId,
-    ref: ' Subject',
+    ref: 'Subject',
     require: true,
   },
   mandatory: Boolean,
   options: [
     {
-      sequence: {
-        type: Number,
-        require: true,
-      },
-      description: {
-        type: String,
-        min: 1,
-        max: 100,
-      },
+      type: Schema.Types.ObjectId,
+      ref: 'QuestionOption',
+      require: true,
     },
   ],
 });
