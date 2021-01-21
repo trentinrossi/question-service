@@ -15,6 +15,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const categoryRoutes = require('./routes/categoryRoutes');
 const questionRoutes = require('./routes/questionRoutes');
+const subjectRoutes = require('./routes/subjectRoutes');
 
 const app = express();
 const port = process.env.PORT || process.env.SERVICE_PORT;
@@ -22,6 +23,7 @@ const port = process.env.PORT || process.env.SERVICE_PORT;
 app.use(express.json());
 app.use('/category', categoryRoutes);
 app.use('/question', questionRoutes);
+app.use('/subject', subjectRoutes);
 
 app.listen(port, '0.0.0.0');
 

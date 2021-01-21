@@ -14,6 +14,6 @@ const subjectSchema = new Schema({
     ref: 'Category',
     required: true,
   },
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model('Subject', subjectSchema);

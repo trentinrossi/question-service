@@ -6,7 +6,7 @@ router.get('/', QuestionController.getAll);
 
 // router.get('/:id', CategoryController.getById);
 
-// router.post('/', CategoryController.insert);
+router.post('/', QuestionController.insert);
 
 // router.patch('/:id', CategoryController.update);
 

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Subject = require('./Subject');
 const { Schema } = mongoose;
 
 const questionSchema = new Schema({
@@ -27,6 +26,6 @@ const questionSchema = new Schema({
       require: true,
     },
   ],
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model('Question', questionSchema);

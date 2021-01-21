@@ -12,6 +12,6 @@ const questionOptionSchema = new Schema({
     max: 100,
     required: true,
   },
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model('QuestionOption', questionOptionSchema);

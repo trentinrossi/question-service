@@ -8,6 +8,6 @@ const categorySchema = new Schema({
     max: 100,
     required: true,
   },
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model('Category', categorySchema);
