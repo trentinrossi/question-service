@@ -12,7 +12,7 @@ function getAll(req, res) {
 }
 
 function getById(req, res) {
-  Subject.findOne({ _id: req.params.id })
+  Subject.findById({ _id: req.params.id })
     .populate('category', '_id name')
     .then((result) => {
       if (result === null) {
@@ -20,7 +20,8 @@ function getById(req, res) {
       } else {
         res.status(200).json(result);
       }
-    });
+    })
+    .catch((err) => res.status(500).json(err));
 }
 
 function insert(req, res) {

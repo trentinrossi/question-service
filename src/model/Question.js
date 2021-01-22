@@ -21,9 +21,8 @@ const questionSchema = new Schema({
   mandatory: Boolean,
   options: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'QuestionOption',
-      require: true,
+      sequence: {type: String, mandatory: true},
+      description: {type: String, mandatory: true}      
     },
   ],
 }, { versionKey: false });

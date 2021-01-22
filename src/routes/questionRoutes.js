@@ -3,13 +3,9 @@ const router = express.Router();
 const QuestionController = require('../controller/questionController');
 
 router.get('/', QuestionController.getAll);
-
-// router.get('/:id', CategoryController.getById);
-
+router.get('/:id', QuestionController.getById);
 router.post('/', QuestionController.insert);
-
-// router.patch('/:id', CategoryController.update);
-
-// router.delete('/:id', CategoryController.remove);
+router.patch('/:id', QuestionController.update);
+router.delete('/:id', QuestionController.remove);
 
 module.exports = router;
