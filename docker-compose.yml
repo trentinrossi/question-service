@@ -1,6 +1,6 @@
 version: '3'
 services:
-  respondent-service:
+  question-service:
     container_name: question-service
     image: rodrigotrentinrossi/question-service
     restart: always
