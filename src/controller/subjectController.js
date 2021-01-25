@@ -2,10 +2,9 @@ const Subject = require('../model/Subject');
 const Category = require('../model/Category');
 
 function getAll(req, res) {
-  Subject.find()
+  Subject.find(req.query)
     .populate('category', '_id name')
     .then((resp) => {
-      console.log(resp);
       res.status(200).json(resp);
     })
     .catch((err) => res.status(400).json(err));
@@ -16,7 +15,7 @@ function getById(req, res) {
     .populate('category', '_id name')
     .then((result) => {
       if (result === null) {
-        res.status(400).json({ error: 'Subject not found' });
+        res.status(404).json({ error: 'Subject not found' });
       } else {
         res.status(200).json(result);
       }
